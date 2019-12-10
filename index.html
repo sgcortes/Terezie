@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        #map {
+            width: 1298px;
+            height: 867px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/TerezieComplexLimit_1.js"></script>
+        <script src="data/ecosystem_type_2.js"></script>
+        <script>
+        var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+
+            if (e.target.feature.geometry.type === 'LineString') {
+              highlightLayer.setStyle({
+                color: '#ffff00',
+              });
+            } else {
+              highlightLayer.setStyle({
+                fillColor: '#ffff00',
+                fillOpacity: 1
+              });
+            }
+        }
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[49.807947678962464,18.249358138432843],[49.88240239341138,18.40802074432725]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var layer_GoogleSatellite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            opacity: 1.0,
+            attribution: '',
+        });
+        layer_GoogleSatellite_0;
+        map.addLayer(layer_GoogleSatellite_0);
+        function pop_TerezieComplexLimit_1(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OID_'] !== null ? Autolinker.link(String(feature.properties['OID_'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FolderPath'] !== null ? Autolinker.link(String(feature.properties['FolderPath'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SymbolID'] !== null ? Autolinker.link(String(feature.properties['SymbolID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AltMode'] !== null ? Autolinker.link(String(feature.properties['AltMode'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Base'] !== null ? Autolinker.link(String(feature.properties['Base'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Clamped'] !== null ? Autolinker.link(String(feature.properties['Clamped'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Extruded'] !== null ? Autolinker.link(String(feature.properties['Extruded'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Snippet'] !== null ? Autolinker.link(String(feature.properties['Snippet'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PopupInfo'] !== null ? Autolinker.link(String(feature.properties['PopupInfo'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? Autolinker.link(String(feature.properties['Shape_Leng'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? Autolinker.link(String(feature.properties['Shape_Area'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TerezieComplexLimit_1_0() {
+            return {
+                pane: 'pane_TerezieComplexLimit_1',
+                opacity: 1,
+                color: 'rgba(245,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 8.0, 
+                fillOpacity: 0,
+            }
+        }
+        map.createPane('pane_TerezieComplexLimit_1');
+        map.getPane('pane_TerezieComplexLimit_1').style.zIndex = 401;
+        map.getPane('pane_TerezieComplexLimit_1').style['mix-blend-mode'] = 'normal';
+        var layer_TerezieComplexLimit_1 = new L.geoJson(json_TerezieComplexLimit_1, {
+            attribution: '',
+            pane: 'pane_TerezieComplexLimit_1',
+            onEachFeature: pop_TerezieComplexLimit_1,
+            style: style_TerezieComplexLimit_1_0,
+        });
+        bounds_group.addLayer(layer_TerezieComplexLimit_1);
+        map.addLayer(layer_TerezieComplexLimit_1);
+        function pop_ecosystem_type_2(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Id'] !== null ? Autolinker.link(String(feature.properties['Id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CLC_lv2</th>\
+                        <td>' + (feature.properties['CLC_lv2'] !== null ? Autolinker.link(String(feature.properties['CLC_lv2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['1_CICESv51'] !== null ? Autolinker.link(String(feature.properties['1_CICESv51'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['2_CICESv51'] !== null ? Autolinker.link(String(feature.properties['2_CICESv51'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['3_CICESv51'] !== null ? Autolinker.link(String(feature.properties['3_CICESv51'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['4_CICESv51'] !== null ? Autolinker.link(String(feature.properties['4_CICESv51'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['5_CICESv51'] !== null ? Autolinker.link(String(feature.properties['5_CICESv51'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AREA(Ha)</th>\
+                        <td>' + (feature.properties['AREA(Ha)'] !== null ? Autolinker.link(String(feature.properties['AREA(Ha)'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Perim(Km)</th>\
+                        <td>' + (feature.properties['Perim(Km)'] !== null ? Autolinker.link(String(feature.properties['Perim(Km)'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CLCAreaSum</th>\
+                        <td>' + (feature.properties['CLCAreaSum'] !== null ? Autolinker.link(String(feature.properties['CLCAreaSum'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CLC_lv3</th>\
+                        <td>' + (feature.properties['CLC_lv3'] !== null ? Autolinker.link(String(feature.properties['CLC_lv3'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Descriptions_CLC_Level2_ENG_txCLC2'] !== null ? Autolinker.link(String(feature.properties['Descriptions_CLC_Level2_ENG_txCLC2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Descriptions_CLC_Level3_ENG_txCLC3'] !== null ? Autolinker.link(String(feature.properties['Descriptions_CLC_Level3_ENG_txCLC3'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CLClv3_AREA_SUM_None'] !== null ? Autolinker.link(String(feature.properties['CLClv3_AREA_SUM_None'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ecosystem_type_2_0(feature) {
+            switch(String(feature.properties['CLC_lv3'])) {
+                case '121':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,77,255,0.508)',
+            }
+                    break;
+                case '141':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,166,255,0.508)',
+            }
+                    break;
+                case '211':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,168,0.508)',
+            }
+                    break;
+                case '311':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(128,255,0,0.508)',
+            }
+                    break;
+                case '321':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,242,77,0.508)',
+            }
+                    break;
+                case '324':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,242,0,0.508)',
+            }
+                    break;
+                case '333':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,255,204,0.508)',
+            }
+                    break;
+                case '511':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,204,242,0.508)',
+            }
+                    break;
+                case '512':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(128,242,230,0.508)',
+            }
+                    break;
+                case '112':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,0,0.508)',
+            }
+                    break;
+                case '122':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,113,141,0.508)',
+            }
+                    break;
+                case '132':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,77,141,0.508)',
+            }
+                    break;
+                case '142':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,230,255,0.508)',
+            }
+                    break;
+                case '231':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,230,77,0.508)',
+            }
+                    break;
+                case '242':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,230,77,0.508)',
+            }
+                    break;
+                case '243':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,204,77,0.508)',
+            }
+                    break;
+                case '312':
+                    return {
+                pane: 'pane_ecosystem_type_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.508)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,166,0,0.508)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_ecosystem_type_2');
+        map.getPane('pane_ecosystem_type_2').style.zIndex = 402;
+        map.getPane('pane_ecosystem_type_2').style['mix-blend-mode'] = 'normal';
+        var layer_ecosystem_type_2 = new L.geoJson(json_ecosystem_type_2, {
+            attribution: '',
+            pane: 'pane_ecosystem_type_2',
+            onEachFeature: pop_ecosystem_type_2,
+            style: style_ecosystem_type_2_0,
+        });
+        bounds_group.addLayer(layer_ecosystem_type_2);
+        map.addLayer(layer_ecosystem_type_2);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'ecosystem_type<br /><table><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_121Industrialorcommercialunits0.png" /></td><td>121: Industrial or commercial units</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_141Greenurbanareas1.png" /></td><td>141: Green urban areas</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_211Nonirrigatedarableland2.png" /></td><td>211: Non-irrigated arable land</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_311Broadleavedforest3.png" /></td><td>311: Broad-leaved forest</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_321Naturalgrasslands4.png" /></td><td>321: Natural grasslands</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_324Transitionalwoodlandshrub5.png" /></td><td>324: Transitional woodland-shrub</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_333Sparselyvegetatedareas6.png" /></td><td>333: Sparsely vegetated areas</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_511Watercourses7.png" /></td><td>511: Water courses</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_512Waterbodies8.png" /></td><td>512: Water bodies</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_112Discontinuousurbanfabric9.png" /></td><td>112: Discontinuous urban fabric</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_122Roadandrailnetworksandassociatedland10.png" /></td><td>122: Road and rail networks and associated land</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_132Dumpsites11.png" /></td><td>132: Dump sites</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_142Sportandleisurefacilities12.png" /></td><td>142: Sport and leisure facilities</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_231Pastures13.png" /></td><td>231: Pastures</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_242Complexcultivationpatterns14.png" /></td><td>242: Complex cultivation patterns</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_243Landprincipallyoccupiedbyagriculturewithsignificantareasofnaturalvegetation15.png" /></td><td>243: Land principally occupied by agriculture, with significant areas of natural vegetation</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_312Coniferousforest16.png" /></td><td>312: Coniferous forest</td></tr></table>': layer_ecosystem_type_2,'<img src="legend/TerezieComplexLimit_1.png" /> Terezie Complex Limit': layer_TerezieComplexLimit_1,"Google Satellite": layer_GoogleSatellite_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        resetLabels([layer_ecosystemtype_2]);
+        map.on("zoomend", function(){
+            resetLabels([layer_ecosystemtype_2]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_ecosystemtype_2]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_ecosystemtype_2]);
+        });
+        </script>
+    </body>
+</html>
