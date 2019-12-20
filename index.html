@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
         #map {
-            width: 1298px;
+            width: 1477px;
             height: 867px;
         }
         </style>
@@ -31,7 +31,7 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
         <script src="data/TerezieComplexLimit_1.js"></script>
-        <script src="data/ecosystem_type_2.js"></script>
+        <script src="data/ecosystem_type2_2.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -50,7 +50,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[49.807947678962464,18.249358138432843],[49.88240239341138,18.40802074432725]]);
+        }).fitBounds([[49.807678535502255,18.239039746811656],[49.88053520815939,18.41078568153558]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
         var measureControl = new L.Control.Measure({
@@ -147,7 +147,7 @@
         });
         bounds_group.addLayer(layer_TerezieComplexLimit_1);
         map.addLayer(layer_TerezieComplexLimit_1);
-        function pop_ecosystem_type_2(feature, layer) {
+        function pop_ecosystem_type2_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -158,61 +158,46 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Id'] !== null ? Autolinker.link(String(feature.properties['Id'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">CLC_lv2</th>\
-                        <td>' + (feature.properties['CLC_lv2'] !== null ? Autolinker.link(String(feature.properties['CLC_lv2'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['1_CICESv51'] !== null ? Autolinker.link(String(feature.properties['1_CICESv51'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['2_CICESv51'] !== null ? Autolinker.link(String(feature.properties['2_CICESv51'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['3_CICESv51'] !== null ? Autolinker.link(String(feature.properties['3_CICESv51'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['4_CICESv51'] !== null ? Autolinker.link(String(feature.properties['4_CICESv51'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['5_CICESv51'] !== null ? Autolinker.link(String(feature.properties['5_CICESv51'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">AREA(Ha)</th>\
-                        <td>' + (feature.properties['AREA(Ha)'] !== null ? Autolinker.link(String(feature.properties['AREA(Ha)'])) : '') + '</td>\
+                        <th scope="row">Area(Ha)</th>\
+                        <td>' + (feature.properties['Area(Ha)'] !== null ? Autolinker.link(String(feature.properties['Area(Ha)'])) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Perim(Km)</th>\
                         <td>' + (feature.properties['Perim(Km)'] !== null ? Autolinker.link(String(feature.properties['Perim(Km)'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">CLCAreaSum</th>\
-                        <td>' + (feature.properties['CLCAreaSum'] !== null ? Autolinker.link(String(feature.properties['CLCAreaSum'])) : '') + '</td>\
+                        <th scope="row">CLC_lv2</th>\
+                        <td>' + (feature.properties['CLC_lv2'] !== null ? Autolinker.link(String(feature.properties['CLC_lv2'])) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">CLC_lv3</th>\
                         <td>' + (feature.properties['CLC_lv3'] !== null ? Autolinker.link(String(feature.properties['CLC_lv3'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Descriptions_CLC_Level2_ENG_txCLC2'] !== null ? Autolinker.link(String(feature.properties['Descriptions_CLC_Level2_ENG_txCLC2'])) : '') + '</td>\
+                        <th scope="row">CLCAreaSum</th>\
+                        <td>' + (feature.properties['CLCAreaSum'] !== null ? Autolinker.link(String(feature.properties['CLCAreaSum'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Descriptions_CLC_Level3_ENG_txCLC3'] !== null ? Autolinker.link(String(feature.properties['Descriptions_CLC_Level3_ENG_txCLC3'])) : '') + '</td>\
+                        <th scope="row">color_RGB</th>\
+                        <td>' + (feature.properties['color_RGB'] !== null ? Autolinker.link(String(feature.properties['color_RGB'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['CLClv3_AREA_SUM_None'] !== null ? Autolinker.link(String(feature.properties['CLClv3_AREA_SUM_None'])) : '') + '</td>\
+                        <th scope="row">Label_lv2</th>\
+                        <td>' + (feature.properties['Label_lv2'] !== null ? Autolinker.link(String(feature.properties['Label_lv2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Label_lv3</th>\
+                        <td>' + (feature.properties['Label_lv3'] !== null ? Autolinker.link(String(feature.properties['Label_lv3'])) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_ecosystem_type_2_0(feature) {
+        function style_ecosystem_type2_2_0(feature) {
             switch(String(feature.properties['CLC_lv3'])) {
                 case '121':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -226,7 +211,7 @@
                     break;
                 case '141':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -240,7 +225,7 @@
                     break;
                 case '211':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -254,7 +239,7 @@
                     break;
                 case '311':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -268,7 +253,7 @@
                     break;
                 case '321':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -282,7 +267,7 @@
                     break;
                 case '324':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -296,7 +281,7 @@
                     break;
                 case '333':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -310,7 +295,7 @@
                     break;
                 case '511':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -324,7 +309,7 @@
                     break;
                 case '512':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -338,7 +323,7 @@
                     break;
                 case '112':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -352,7 +337,7 @@
                     break;
                 case '122':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -366,7 +351,7 @@
                     break;
                 case '132':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -380,7 +365,7 @@
                     break;
                 case '142':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -394,7 +379,7 @@
                     break;
                 case '231':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -408,7 +393,7 @@
                     break;
                 case '242':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -422,7 +407,7 @@
                     break;
                 case '243':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -436,7 +421,7 @@
                     break;
                 case '312':
                     return {
-                pane: 'pane_ecosystem_type_2',
+                pane: 'pane_ecosystem_type2_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.508)',
                 dashArray: '',
@@ -450,29 +435,29 @@
                     break;
             }
         }
-        map.createPane('pane_ecosystem_type_2');
-        map.getPane('pane_ecosystem_type_2').style.zIndex = 402;
-        map.getPane('pane_ecosystem_type_2').style['mix-blend-mode'] = 'normal';
-        var layer_ecosystem_type_2 = new L.geoJson(json_ecosystem_type_2, {
+        map.createPane('pane_ecosystem_type2_2');
+        map.getPane('pane_ecosystem_type2_2').style.zIndex = 402;
+        map.getPane('pane_ecosystem_type2_2').style['mix-blend-mode'] = 'normal';
+        var layer_ecosystem_type2_2 = new L.geoJson(json_ecosystem_type2_2, {
             attribution: '',
-            pane: 'pane_ecosystem_type_2',
-            onEachFeature: pop_ecosystem_type_2,
-            style: style_ecosystem_type_2_0,
+            pane: 'pane_ecosystem_type2_2',
+            onEachFeature: pop_ecosystem_type2_2,
+            style: style_ecosystem_type2_2_0,
         });
-        bounds_group.addLayer(layer_ecosystem_type_2);
-        map.addLayer(layer_ecosystem_type_2);
+        bounds_group.addLayer(layer_ecosystem_type2_2);
+        map.addLayer(layer_ecosystem_type2_2);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'ecosystem_type<br /><table><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_121Industrialorcommercialunits0.png" /></td><td>121: Industrial or commercial units</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_141Greenurbanareas1.png" /></td><td>141: Green urban areas</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_211Nonirrigatedarableland2.png" /></td><td>211: Non-irrigated arable land</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_311Broadleavedforest3.png" /></td><td>311: Broad-leaved forest</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_321Naturalgrasslands4.png" /></td><td>321: Natural grasslands</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_324Transitionalwoodlandshrub5.png" /></td><td>324: Transitional woodland-shrub</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_333Sparselyvegetatedareas6.png" /></td><td>333: Sparsely vegetated areas</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_511Watercourses7.png" /></td><td>511: Water courses</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_512Waterbodies8.png" /></td><td>512: Water bodies</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_112Discontinuousurbanfabric9.png" /></td><td>112: Discontinuous urban fabric</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_122Roadandrailnetworksandassociatedland10.png" /></td><td>122: Road and rail networks and associated land</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_132Dumpsites11.png" /></td><td>132: Dump sites</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_142Sportandleisurefacilities12.png" /></td><td>142: Sport and leisure facilities</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_231Pastures13.png" /></td><td>231: Pastures</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_242Complexcultivationpatterns14.png" /></td><td>242: Complex cultivation patterns</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_243Landprincipallyoccupiedbyagriculturewithsignificantareasofnaturalvegetation15.png" /></td><td>243: Land principally occupied by agriculture, with significant areas of natural vegetation</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type_2_312Coniferousforest16.png" /></td><td>312: Coniferous forest</td></tr></table>': layer_ecosystem_type_2,'<img src="legend/TerezieComplexLimit_1.png" /> Terezie Complex Limit': layer_TerezieComplexLimit_1,"Google Satellite": layer_GoogleSatellite_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'ecosystem_type2<br /><table><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_121Industrialorcommercialunits0.png" /></td><td>121: Industrial or commercial units</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_141Greenurbanareas1.png" /></td><td>141: Green urban areas</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_211Nonirrigatedarableland2.png" /></td><td>211: Non-irrigated arable land</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_311Broadleavedforest3.png" /></td><td>311: Broad-leaved forest</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_321Naturalgrasslands4.png" /></td><td>321: Natural grasslands</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_324Transitionalwoodlandshrub5.png" /></td><td>324: Transitional woodland-shrub</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_333Sparselyvegetatedareas6.png" /></td><td>333: Sparsely vegetated areas</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_511Watercourses7.png" /></td><td>511: Water courses</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_512Waterbodies8.png" /></td><td>512: Water bodies</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_112Discontinuousurbanfabric9.png" /></td><td>112: Discontinuous urban fabric</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_122Roadandrailnetworksandassociatedland10.png" /></td><td>122: Road and rail networks and associated land</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_132Dumpsites11.png" /></td><td>132: Dump sites</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_142Sportandleisurefacilities12.png" /></td><td>142: Sport and leisure facilities</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_231Pastures13.png" /></td><td>231: Pastures</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_242Complexcultivationpatterns14.png" /></td><td>242: Complex cultivation patterns</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_243Landprincipallyoccupiedbyagriculturewithsignificantareasofnaturalvegetation15.png" /></td><td>243: Land principally occupied by agriculture, with significant areas of natural vegetation</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_312Coniferousforest16.png" /></td><td>312: Coniferous forest</td></tr></table>': layer_ecosystem_type2_2,'<img src="legend/TerezieComplexLimit_1.png" /> Terezie Complex Limit': layer_TerezieComplexLimit_1,"Google Satellite": layer_GoogleSatellite_0,},{collapsed:false}).addTo(map);
         setBounds();
-        resetLabels([layer_ecosystemtype_2]);
+        resetLabels([layer_ecosystemtype2_2]);
         map.on("zoomend", function(){
-            resetLabels([layer_ecosystemtype_2]);
+            resetLabels([layer_ecosystemtype2_2]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_ecosystemtype_2]);
+            resetLabels([layer_ecosystemtype2_2]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_ecosystemtype_2]);
+            resetLabels([layer_ecosystemtype2_2]);
         });
         </script>
     </body>
