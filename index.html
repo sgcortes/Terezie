@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
         #map {
-            width: 1477px;
+            width: 1282px;
             height: 867px;
         }
         </style>
@@ -50,7 +50,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[49.807678535502255,18.239039746811656],[49.88053520815939,18.41078568153558]]);
+        }).fitBounds([[49.80846906780601,18.249686589828276],[49.87975763687196,18.40013004572261]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
         var measureControl = new L.Control.Measure({
@@ -91,13 +91,14 @@
                         <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['FolderPath'] !== null ? Autolinker.link(String(feature.properties['FolderPath'])) : '') + '</td>\
+                        <th scope="row">FolderPath</th>\
+                        <td>' + (feature.properties['FolderPath'] !== null ? Autolinker.link(String(feature.properties['FolderPath'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['SymbolID'] !== null ? Autolinker.link(String(feature.properties['SymbolID'])) : '') + '</td>\
+                        <td colspan="2"><strong>SymbolID</strong><br />' + (feature.properties['SymbolID'] !== null ? Autolinker.link(String(feature.properties['SymbolID'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['AltMode'] !== null ? Autolinker.link(String(feature.properties['AltMode'])) : '') + '</td>\
+                        <td colspan="2"><strong>AltMode</strong><br />' + (feature.properties['AltMode'] !== null ? Autolinker.link(String(feature.properties['AltMode'])) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['Base'] !== null ? Autolinker.link(String(feature.properties['Base'])) : '') + '</td>\
@@ -223,20 +224,6 @@
                 fillColor: 'rgba(255,166,255,0.508)',
             }
                     break;
-                case '211':
-                    return {
-                pane: 'pane_ecosystem_type2_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.508)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,255,168,0.508)',
-            }
-                    break;
                 case '311':
                     return {
                 pane: 'pane_ecosystem_type2_2',
@@ -277,34 +264,6 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(166,242,0,0.508)',
-            }
-                    break;
-                case '333':
-                    return {
-                pane: 'pane_ecosystem_type2_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.508)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(204,255,204,0.508)',
-            }
-                    break;
-                case '511':
-                    return {
-                pane: 'pane_ecosystem_type2_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.508)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(0,204,242,0.508)',
             }
                     break;
                 case '512':
@@ -447,7 +406,7 @@
         bounds_group.addLayer(layer_ecosystem_type2_2);
         map.addLayer(layer_ecosystem_type2_2);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'ecosystem_type2<br /><table><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_121Industrialorcommercialunits0.png" /></td><td>121: Industrial or commercial units</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_141Greenurbanareas1.png" /></td><td>141: Green urban areas</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_211Nonirrigatedarableland2.png" /></td><td>211: Non-irrigated arable land</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_311Broadleavedforest3.png" /></td><td>311: Broad-leaved forest</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_321Naturalgrasslands4.png" /></td><td>321: Natural grasslands</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_324Transitionalwoodlandshrub5.png" /></td><td>324: Transitional woodland-shrub</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_333Sparselyvegetatedareas6.png" /></td><td>333: Sparsely vegetated areas</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_511Watercourses7.png" /></td><td>511: Water courses</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_512Waterbodies8.png" /></td><td>512: Water bodies</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_112Discontinuousurbanfabric9.png" /></td><td>112: Discontinuous urban fabric</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_122Roadandrailnetworksandassociatedland10.png" /></td><td>122: Road and rail networks and associated land</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_132Dumpsites11.png" /></td><td>132: Dump sites</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_142Sportandleisurefacilities12.png" /></td><td>142: Sport and leisure facilities</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_231Pastures13.png" /></td><td>231: Pastures</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_242Complexcultivationpatterns14.png" /></td><td>242: Complex cultivation patterns</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_243Landprincipallyoccupiedbyagriculturewithsignificantareasofnaturalvegetation15.png" /></td><td>243: Land principally occupied by agriculture, with significant areas of natural vegetation</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_312Coniferousforest16.png" /></td><td>312: Coniferous forest</td></tr></table>': layer_ecosystem_type2_2,'<img src="legend/TerezieComplexLimit_1.png" /> Terezie Complex Limit': layer_TerezieComplexLimit_1,"Google Satellite": layer_GoogleSatellite_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'ecosystem_type2<br /><table><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_121Industrialorcommercialunits0.png" /></td><td>121: Industrial or commercial units</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_141Greenurbanareas1.png" /></td><td>141: Green urban areas</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_311Broadleavedforest2.png" /></td><td>311: Broad-leaved forest</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_321Naturalgrasslands3.png" /></td><td>321: Natural grasslands</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_324Transitionalwoodlandshrub4.png" /></td><td>324: Transitional woodland-shrub</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_512Waterbodies5.png" /></td><td>512: Water bodies</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_112Discontinuousurbanfabric6.png" /></td><td>112: Discontinuous urban fabric</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_122Roadandrailnetworksandassociatedland7.png" /></td><td>122: Road and rail networks and associated land</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_132Dumpsites8.png" /></td><td>132: Dump sites</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_142Sportandleisurefacilities9.png" /></td><td>142: Sport and leisure facilities</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_231Pastures10.png" /></td><td>231: Pastures</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_242Complexcultivationpatterns11.png" /></td><td>242: Complex cultivation patterns</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_243Landprincipallyoccupiedbyagriculturewithsignificantareasofnaturalvegetation12.png" /></td><td>243: Land principally occupied by agriculture, with significant areas of natural vegetation</td></tr><tr><td style="text-align: center;"><img src="legend/ecosystem_type2_2_312Coniferousforest13.png" /></td><td>312: Coniferous forest</td></tr></table>': layer_ecosystem_type2_2,'<img src="legend/TerezieComplexLimit_1.png" /> Terezie Complex Limit': layer_TerezieComplexLimit_1,"Google Satellite": layer_GoogleSatellite_0,},{collapsed:false}).addTo(map);
         setBounds();
         resetLabels([layer_ecosystemtype2_2]);
         map.on("zoomend", function(){
